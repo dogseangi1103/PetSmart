@@ -1,6 +1,12 @@
+using Business.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+#region Dependency Injection
+builder.Services.AddScoped<ProductService>();
+#endregion
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -8,12 +8,17 @@ namespace PetSmart.Controllers
     [Route("[controller]")]
     public class ProductsController : ControllerBase
     {
+        private readonly ProductService _productService;
+
+        public ProductsController(ProductService productService)
+        {
+            _productService = productService;
+        }
+
         [HttpGet(Name = "GetProducts")]
         public IActionResult Get()
         {
-            // Todo: DI
-            var productServices = new ProductService();
-            var products = productServices.GetProducts();
+            var products = _productService.GetProducts();
             return Ok(products);
         }
     }

@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetSmart", "PetSmart\PetSmart.csproj", "{DA53E953-76B4-45BA-AC5E-0467FE596770}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetSmart", "PetSmart\PetSmart.csproj", "{DA53E953-76B4-45BA-AC5E-0467FE596770}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Business.csproj", "{DB54130D-F787-4EEC-975D-1DFF6D0B921F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{8B9F9EE2-2150-4F88-A47F-64D5F654214F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{DA53E953-76B4-45BA-AC5E-0467FE596770}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA53E953-76B4-45BA-AC5E-0467FE596770}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA53E953-76B4-45BA-AC5E-0467FE596770}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB54130D-F787-4EEC-975D-1DFF6D0B921F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB54130D-F787-4EEC-975D-1DFF6D0B921F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB54130D-F787-4EEC-975D-1DFF6D0B921F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB54130D-F787-4EEC-975D-1DFF6D0B921F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B9F9EE2-2150-4F88-A47F-64D5F654214F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B9F9EE2-2150-4F88-A47F-64D5F654214F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B9F9EE2-2150-4F88-A47F-64D5F654214F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B9F9EE2-2150-4F88-A47F-64D5F654214F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

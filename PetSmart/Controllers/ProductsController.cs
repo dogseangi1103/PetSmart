@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Business.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace PetSmart.Controllers
@@ -10,12 +11,9 @@ namespace PetSmart.Controllers
         [HttpGet(Name = "GetProducts")]
         public IActionResult Get()
         {
-            var products = new List<dynamic>
-            {
-                new { Id = 1, Name = "dog food 1" },
-                new { Id = 2, Name = "dog food 2" },
-                new { Id = 3, Name = "dog food 3" },
-            };
+            // Todo: DI
+            var productServices = new ProductService();
+            var products = productServices.GetProducts();
             return Ok(products);
         }
     }

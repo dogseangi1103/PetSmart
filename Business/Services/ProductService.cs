@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Business.Services
 {
-    public class ProductService
+    public class ProductService : IProductService
     {
         private readonly DogseandatabaseContext _dbContext;
 

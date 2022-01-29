@@ -19,7 +19,7 @@ namespace Business.Services
 
         public IEnumerable<Product> GetProducts()
         {
-            var products = _dbContext.Product;
+            var products = _dbContext.Product.Where(p => p.IsDeleted == false);
             return products;
         }
     }

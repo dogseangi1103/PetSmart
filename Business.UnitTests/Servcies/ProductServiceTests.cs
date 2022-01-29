@@ -22,19 +22,17 @@ namespace Business.UnitTests.Servcies
         }
 
         [Test]
-        public void GetProducts_WhenCalled_ReturnSameProductCountInDb()
+        public void GetProducts_WhenCalled_ReturnProductsWhichAreNotDeleted()
         {
-            var products = new List<Product>
-            {
-                new Product { Id = 1, Name = "a1" },
-                new Product { Id = 2, Name = "a2" },
-                new Product { Id = 3, Name = "a3" },
-            };
+            var product1 = new Product { Id = 1, Name = "a1", IsDeleted = false };
+            var product2 = new Product { Id = 2, Name = "a2", IsDeleted = true };
+            var product3 = new Product { Id = 3, Name = "a3", IsDeleted = false };
+            var products = new List<Product> { product1, product2, product3 };
             _dbContext.Setup(ps => ps.Product).ReturnsDbSet(products);
 
             var result = _productService.GetProducts();
 
-            Assert.That(result.Count, Is.EqualTo(products.Count));
+            Assert.That(!result.Contains(product2));
         }
     }
 }

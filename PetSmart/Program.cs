@@ -1,4 +1,6 @@
 using Business.Services;
+using Data.Context;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +8,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 #region Dependency Injection
 builder.Services.AddScoped<ProductService>();
+#endregion
+
+#region Entity Framework
+builder.Services.AddDbContext<DogseandatabaseContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
 #endregion
 
 builder.Services.AddControllers();

@@ -28,5 +28,10 @@ namespace Business.Services
 
             return products;
         }
+
+        public Product GetProduct(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

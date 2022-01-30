@@ -56,5 +56,13 @@ namespace Business.UnitTests.Servcies
             Assert.That(!result.Contains(productWithoutKeyword));
             Assert.That(!result.Contains(productDeleted));
         }
+
+        [Test]
+        public void GetProduct_IdMatched_ReturnProduct()
+        {
+            var result = _productService.GetProduct(productWithKeyword1.Id);
+
+            Assert.That(result == productWithKeyword1);
+        }
     }
 }

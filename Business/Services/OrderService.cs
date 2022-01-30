@@ -21,7 +21,11 @@ namespace Business.Services
 
         public async Task<decimal> CalculateOrderPrice(int id)
         {
-            throw new NotImplementedException();
+            var order = await _dbContext.Order
+                .Include(o => o.OrderItem)
+                .SingleAsync(o => o.Id == id);
+            var orderPrice = order.OrderItem.Sum(oi => oi.Price);
+            return orderPrice;
         }
 
         public async Task<Order> Pay(int id)

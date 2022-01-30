@@ -5,6 +5,7 @@ using Data.Entities;
 using Moq;
 using Moq.EntityFrameworkCore;
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -39,6 +40,13 @@ namespace Business.UnitTests.Servcies
             var result = await _orderService.Pay(unpaidOrder.Id);
 
             Assert.That(result.Status == (int)OrderStatus.Paid);
+        }
+
+        [Test]
+        public void Pay_OrderStatusIsNotUnpaid_ThrowInvalidOperationException()
+        {
+            Assert.That(() => _orderService.Pay(paidOrder.Id), Throws.Exception.TypeOf<InvalidOperationException>());
+            Assert.That(() => _orderService.Pay(deliveredOrder.Id), Throws.Exception.TypeOf<InvalidOperationException>());
         }
     }
 }

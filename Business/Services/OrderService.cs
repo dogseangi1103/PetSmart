@@ -22,6 +22,12 @@ namespace Business.Services
         public async Task<Order> Pay(int id)
         {
             var order = await _dbContext.Order.SingleAsync(o => o.Id == id);
+
+            if (order.Status != (int)OrderStatus.Unpaid)
+            {
+                throw new InvalidOperationException("訂單狀態不是未付款");
+            }
+
             order.Status = (int)OrderStatus.Paid;
             await _dbContext.SaveChangesAsync();
             return order;

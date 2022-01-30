@@ -1,4 +1,5 @@
-﻿using Business.Services;
+﻿using Business.Enums;
+using Business.Services;
 using Data.Context;
 using Data.Entities;
 using Moq;
@@ -25,10 +26,9 @@ namespace Business.UnitTests.Servcies
             _dbContext = new Mock<DogseandatabaseContext>();
             _orderService = new OrderService(_dbContext.Object);
 
-            // Todo: Status Enum
-            unpaidOrder = new Order { Id = 11, Address = "a1", Status = 1 };
-            paidOrder = new Order { Id = 12, Address = "a2", Status = 2 };
-            deliveredOrder = new Order { Id = 13, Address = "a3", Status = 3 };
+            unpaidOrder = new Order { Id = 11, Address = "a1", Status = (int)OrderStatus.Unpaid };
+            paidOrder = new Order { Id = 12, Address = "a2", Status = (int)OrderStatus.Paid };
+            deliveredOrder = new Order { Id = 13, Address = "a3", Status = (int)OrderStatus.Delievered };
             var orders = new List<Order> { unpaidOrder, paidOrder, deliveredOrder };
             _dbContext.Setup(ps => ps.Order).ReturnsDbSet(orders);
         }
@@ -38,8 +38,7 @@ namespace Business.UnitTests.Servcies
         {
             var result = await _orderService.Pay(unpaidOrder.Id);
 
-            // Todo: Status Enum
-            Assert.That(result.Status == 2);
+            Assert.That(result.Status == (int)OrderStatus.Paid);
         }
     }
 }

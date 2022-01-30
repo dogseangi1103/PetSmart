@@ -19,10 +19,18 @@ namespace Data.Context
         {
         }
 
+        public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<Product> Product { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Order>(entity =>
+            {
+                entity.Property(e => e.Address)
+                    .IsRequired()
+                    .HasMaxLength(100);
+            });
+
             modelBuilder.Entity<Product>(entity =>
             {
                 entity.Property(e => e.Name)

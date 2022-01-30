@@ -1,5 +1,6 @@
 -- === Delete Table ===
 
+drop table if exists [Order]
 drop table if exists Product
 
 go
@@ -11,6 +12,14 @@ create table Product
 	Id int primary key identity not null
 	, [Name] nvarchar(100) not null
 	, IsDeleted bit not null default 0
+)
+
+create table [Order]
+(
+	Id int primary key identity not null
+	, [Address] nvarchar(100) not null
+	-- 1=未付款 2=已付款 3=已送達
+	, [Status] int not null
 )
 
 go
@@ -25,8 +34,16 @@ values
 , (N'Hill’s 希爾思™寵物食品 成犬 小顆粒 雞肉與大麥 12公斤', 0)
 , (N'Hill’s 希爾思™寵物食品 幼犬 小顆粒 雞肉與大麥 12公斤', 0)
 
+insert [Order]
+([Address], [Status])
+values
+(N'台北市中正區林森北路9巷13號', 1)
+, (N'新北市板橋區文化路一段270巷3弄6號', 2)
+, (N'新北市土城區立德路2號', 3)
+
 go
 
 -- === Show Data ===
 
 select * from Product
+select * from [Order]

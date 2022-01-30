@@ -1,5 +1,6 @@
 -- === Delete Table ===
 
+drop table if exists OrderItem
 drop table if exists [Order]
 drop table if exists Product
 
@@ -22,6 +23,15 @@ create table [Order]
 	, [Status] int not null
 )
 
+create table OrderItem
+(
+	Id int primary key identity not null
+	, OrderId int not null
+	, ProductName nvarchar(100) not null
+	, Price decimal not null
+	, foreign key (OrderId) references [Order](Id)
+)
+
 go
 
 -- === Create Data ===
@@ -41,9 +51,18 @@ values
 , (N'新北市板橋區文化路一段270巷3弄6號', 2)
 , (N'新北市土城區立德路2號', 3)
 
+insert OrderItem
+(OrderId, ProductName, Price)
+values
+(1, N'【法國皇家】中型成犬MA 15KG', 10)
+, (1, N'Hill’s 希爾思™寵物食品 成犬 小顆粒 雞肉與大麥 12公斤', 20)
+, (2, N'【法國皇家】中型成犬MA 15KG', 30)
+, (3, N'【法國皇家】中型成犬MA 15KG', 30)
+
 go
 
 -- === Show Data ===
 
 select * from Product
 select * from [Order]
+select * from OrderItem

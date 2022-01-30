@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Busine
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{8B9F9EE2-2150-4F88-A47F-64D5F654214F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business.UnitTests", "Business.UnitTests\Business.UnitTests.csproj", "{2EC568BD-E86C-4D31-9560-0AAA4BDC8A7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business.UnitTests", "Business.UnitTests\Business.UnitTests.csproj", "{2EC568BD-E86C-4D31-9560-0AAA4BDC8A7F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

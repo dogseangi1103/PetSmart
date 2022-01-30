@@ -16,16 +16,16 @@ namespace PetSmart.Controllers
         }
 
         [HttpGet(Name = "GetProducts")]
-        public IActionResult Get(string? keyword)
+        public async Task<IActionResult> Get(string? keyword)
         {
-            var products = _productService.GetProducts(keyword);
+            var products = await _productService.GetProducts(keyword);
             return Ok(products);
         }
 
         [HttpGet("{id}", Name = "GetProduct")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            var product = _productService.GetProduct(id);
+            var product = await _productService.GetProduct(id);
             return Ok(product);
         }
     }

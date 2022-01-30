@@ -6,6 +6,7 @@ using Moq.EntityFrameworkCore;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Business.UnitTests.Servcies
 {
@@ -37,9 +38,9 @@ namespace Business.UnitTests.Servcies
         }
 
         [Test]
-        public void GetProducts_NoSearchFilter_ReturnProductsWhichAreNotDeleted()
+        public async Task GetProducts_NoSearchFilter_ReturnProductsWhichAreNotDeleted()
         {
-            var result = _productService.GetProducts();
+            var result = await _productService.GetProducts();
 
             Assert.That(result.Contains(productWithKeyword1));
             Assert.That(result.Contains(productWithKeyword2));
@@ -48,9 +49,9 @@ namespace Business.UnitTests.Servcies
         }
 
         [Test]
-        public void GetProducts_SearchKeyword_ReturnProductsNameWithKeyword()
+        public async Task GetProducts_SearchKeyword_ReturnProductsNameWithKeyword()
         {
-            var result = _productService.GetProducts(Keyword);
+            var result = await _productService.GetProducts(Keyword);
 
             Assert.That(result.Contains(productWithKeyword1));
             Assert.That(result.Contains(productWithKeyword2));
@@ -59,9 +60,9 @@ namespace Business.UnitTests.Servcies
         }
 
         [Test]
-        public void GetProduct_IdMatched_ReturnProduct()
+        public async Task GetProduct_IdMatched_ReturnProduct()
         {
-            var result = _productService.GetProduct(productWithKeyword1.Id);
+            var result = await _productService.GetProduct(productWithKeyword1.Id);
 
             Assert.That(result == productWithKeyword1);
         }

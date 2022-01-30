@@ -19,7 +19,7 @@ namespace Business.Services
 
         public IEnumerable<Product> GetProducts(string keyword = null)
         {
-            var products = _dbContext.Product.Where(p => p.IsDeleted == false);
+            var products = GetProductsNotDeleted();
 
             if (!string.IsNullOrEmpty(keyword))
             {
@@ -31,8 +31,15 @@ namespace Business.Services
 
         public Product GetProduct(int id)
         {
-            var product = _dbContext.Product.Single(p=>p.Id == id);
+            var products = GetProductsNotDeleted();
+            var product = products.Single(p => p.Id == id);
             return product;
+        }
+
+        private IQueryable<Product> GetProductsNotDeleted()
+        {
+            var products = _dbContext.Product.Where(p => p.IsDeleted == false);
+            return products;
         }
     }
 }

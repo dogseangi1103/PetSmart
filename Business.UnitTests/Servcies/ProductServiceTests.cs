@@ -71,5 +71,11 @@ namespace Business.UnitTests.Servcies
         {
             Assert.That(() => _productService.GetProduct(NotMatchProductId), Throws.Exception);
         }
+
+        [Test]
+        public void GetProduct_IdMatchedButProductIsDeleted_ThrowException()
+        {
+            Assert.That(() => _productService.GetProduct(productDeleted.Id), Throws.Exception);
+        }
     }
 }

@@ -63,11 +63,11 @@ namespace Business.UnitTests.Servcies
         }
 
         [Test]
-        public async Task CalculateOrderPrice_WhenCalled_ReturnSumOfOrderItemPrice()
+        public async Task CalculateOrderPrice_WhenCalled_ReturnSumOfOrderItem()
         {
             var result = await _orderService.CalculateOrderPrice(unpaidOrder.Id);
 
-            Assert.That(result == orderItems.Sum(oi => oi.Price));
+            Assert.That(result == orderItems.Sum(oi => oi.Price * oi.Quantity));
         }
     }
 }

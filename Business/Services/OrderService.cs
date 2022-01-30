@@ -24,7 +24,7 @@ namespace Business.Services
             var order = await _dbContext.Order
                 .Include(o => o.OrderItem)
                 .SingleAsync(o => o.Id == id);
-            var orderPrice = order.OrderItem.Sum(oi => oi.Price);
+            var orderPrice = order.OrderItem.Sum(oi => oi.Price * oi.Quantity);
             return orderPrice;
         }
 

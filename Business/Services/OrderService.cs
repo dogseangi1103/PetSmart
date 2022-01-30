@@ -19,6 +19,11 @@ namespace Business.Services
             _dbContext = dbContext;
         }
 
+        public async Task<decimal> CalculateOrderPrice(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<Order> Pay(int id)
         {
             var order = await _dbContext.Order.SingleAsync(o => o.Id == id);

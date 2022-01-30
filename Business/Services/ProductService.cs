@@ -17,7 +17,7 @@ namespace Business.Services
             _dbContext = dbContext;
         }
 
-        public IEnumerable<Product> GetProducts()
+        public IEnumerable<Product> GetProducts(string keyword = null)
         {
             var products = _dbContext.Product.Where(p => p.IsDeleted == false);
             return products;

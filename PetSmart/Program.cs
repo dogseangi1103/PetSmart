@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 #region Dependency Injection
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 #endregion
 
 #region Entity Framework

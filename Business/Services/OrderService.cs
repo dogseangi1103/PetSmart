@@ -1,4 +1,5 @@
-﻿using Data.Context;
+﻿using Business.Enums;
+using Data.Context;
 using Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -18,9 +19,12 @@ namespace Business.Services
             _dbContext = dbContext;
         }
 
-        public Task<Order> Pay(int id)
+        public async Task<Order> Pay(int id)
         {
-            throw new NotImplementedException();
+            var order = await _dbContext.Order.SingleAsync(o => o.Id == id);
+            order.Status = (int)OrderStatus.Paid;
+            await _dbContext.SaveChangesAsync();
+            return order;
         }
     }
 }

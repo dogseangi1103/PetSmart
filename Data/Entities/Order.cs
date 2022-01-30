@@ -7,8 +7,15 @@ namespace Data.Entities
 {
     public partial class Order
     {
+        public Order()
+        {
+            OrderItem = new HashSet<OrderItem>();
+        }
+
         public int Id { get; set; }
         public string Address { get; set; }
         public int Status { get; set; }
+
+        public virtual ICollection<OrderItem> OrderItem { get; set; }
     }
 }

@@ -15,6 +15,13 @@ namespace PetSmart.Controllers
             _orderService = orderService;
         }
 
+        [HttpGet("{id}", Name = "GetOrderPrice")]
+        public async Task<IActionResult> GetOrderPrice(int id)
+        {
+            var orderPrice = await _orderService.CalculateOrderPrice(id);
+            return Ok(orderPrice);
+        }
+
         [HttpPatch("{id}", Name = "Pay")]
         public async Task<IActionResult> Pay(int id)
         {

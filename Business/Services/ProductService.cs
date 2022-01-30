@@ -20,6 +20,12 @@ namespace Business.Services
         public IEnumerable<Product> GetProducts(string keyword = null)
         {
             var products = _dbContext.Product.Where(p => p.IsDeleted == false);
+
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                products = products.Where(p => p.Name.Contains(keyword));
+            }
+
             return products;
         }
     }

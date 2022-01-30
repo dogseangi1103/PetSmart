@@ -31,7 +31,8 @@ namespace Business.Services
 
         public Product GetProduct(int id)
         {
-            throw new NotImplementedException();
+            var product = _dbContext.Product.Single(p=>p.Id == id);
+            return product;
         }
     }
 }

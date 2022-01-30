@@ -21,5 +21,12 @@ namespace PetSmart.Controllers
             var products = _productService.GetProducts(keyword);
             return Ok(products);
         }
+
+        [HttpGet("{id}", Name = "GetProduct")]
+        public IActionResult Get(int id)
+        {
+            var product = _productService.GetProduct(id);
+            return Ok(product);
+        }
     }
 }

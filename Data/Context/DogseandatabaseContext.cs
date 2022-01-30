@@ -44,7 +44,7 @@ namespace Data.Context
                     .WithMany(p => p.OrderItem)
                     .HasForeignKey(d => d.OrderId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__OrderItem__Order__74994623");
+                    .HasConstraintName("FK__OrderItem__Order__7C3A67EB");
             });
 
             modelBuilder.Entity<Product>(entity =>

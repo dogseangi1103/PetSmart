@@ -29,6 +29,7 @@ create table OrderItem
 	, OrderId int not null
 	, ProductName nvarchar(100) not null
 	, Price decimal not null
+	, Quantity int not null
 	, foreign key (OrderId) references [Order](Id)
 )
 
@@ -52,12 +53,12 @@ values
 , (N'新北市土城區立德路2號', 3)
 
 insert OrderItem
-(OrderId, ProductName, Price)
+(OrderId, ProductName, Price, Quantity)
 values
-(1, N'【法國皇家】中型成犬MA 15KG', 10)
-, (1, N'Hill’s 希爾思™寵物食品 成犬 小顆粒 雞肉與大麥 12公斤', 20)
-, (2, N'【法國皇家】中型成犬MA 15KG', 30)
-, (3, N'【法國皇家】中型成犬MA 15KG', 30)
+(1, N'【法國皇家】中型成犬MA 15KG', 10, 1)
+, (1, N'Hill’s 希爾思™寵物食品 成犬 小顆粒 雞肉與大麥 12公斤', 20, 2)
+, (2, N'【法國皇家】中型成犬MA 15KG', 30, 5)
+, (3, N'【法國皇家】中型成犬MA 15KG', 30, 1)
 
 go
 

@@ -1,5 +1,6 @@
 ﻿using Data.Context;
 using Data.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace Business.Services
             _dbContext = dbContext;
         }
 
-        public IEnumerable<Product> GetProducts(string keyword = null)
+        public async Task<IEnumerable<Product>> GetProducts(string keyword = null)
         {
             var products = GetProductsNotDeleted();
 
@@ -26,13 +27,13 @@ namespace Business.Services
                 products = products.Where(p => p.Name.Contains(keyword));
             }
 
-            return products;
+            return await products.ToListAsync();
         }
 
-        public Product GetProduct(int id)
+        public async Task<Product> GetProduct(int id)
         {
             var products = GetProductsNotDeleted();
-            var product = products.Single(p => p.Id == id);
+            var product = await products.SingleAsync(p => p.Id == id);
             return product;
         }
 

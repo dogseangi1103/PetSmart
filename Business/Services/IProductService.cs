@@ -4,7 +4,7 @@ namespace Business.Services
 {
     public interface IProductService
     {
-        IEnumerable<Product> GetProducts(string keyword = null);
-        Product GetProduct(int id);
+        Task<IEnumerable<Product>> GetProducts(string keyword = null);
+        Task<Product> GetProduct(int id);
     }
 }

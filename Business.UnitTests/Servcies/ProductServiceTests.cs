@@ -12,6 +12,7 @@ namespace Business.UnitTests.Servcies
     public class ProductServiceTests
     {
         private const string Keyword = "成犬";
+        private const int NotMatchProductId = 999;
 
         private Mock<DogseandatabaseContext> _dbContext;
         private IProductService _productService;
@@ -63,6 +64,12 @@ namespace Business.UnitTests.Servcies
             var result = _productService.GetProduct(productWithKeyword1.Id);
 
             Assert.That(result == productWithKeyword1);
+        }
+
+        [Test]
+        public void GetProduct_IdNotMatched_ThrowException()
+        {
+            Assert.That(() => _productService.GetProduct(NotMatchProductId), Throws.Exception);
         }
     }
 }
